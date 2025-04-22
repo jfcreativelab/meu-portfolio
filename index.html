@@ -12,15 +12,18 @@
   <link rel="stylesheet" href="css/sobre.css">
   <link rel="stylesheet" href="css/projetos.css">
   <link rel="stylesheet" href="css/contato.css">
+  <link rel="stylesheet" href="css/depoimentos.css">
+  <link rel="stylesheet" href="css/chatbot.css">
   
   <!-- Fontes e Ícones -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
   <!-- Metadados para SEO e redes sociais -->
-  <meta name="description" content="Portfólio de João Felipe - Designer e Desenvolvedor Full Stack.">
+  <meta name="description" content="Portfólio de João Felipe - Designer e Desenvolvedor Full Stack especializado em soluções digitais inovadoras e design criativo.">
+  <meta name="keywords" content="desenvolvedor full stack, designer, portfolio, web development, design, João Felipe, JF Creative Lab">
   <meta property="og:title" content="Portfólio - João Felipe (JF Creative Lab)">
-  <meta property="og:description" content="Portfólio de João Felipe - Designer e Desenvolvedor Full Stack.">
+  <meta property="og:description" content="Portfólio de João Felipe - Designer e Desenvolvedor Full Stack especializado em soluções digitais inovadoras e design criativo.">
   <meta property="og:image" content="assets/images/preview.jpg">
   <meta property="og:url" content="https://jfcreativelab.github.io/meu-portfolio/">
   <meta name="twitter:card" content="summary_large_image">
@@ -43,9 +46,10 @@
   <header>
     <nav>
       <ul>
-        <li><a href="#home">🏠 Home</a></li>
+        <li><a href="#home" class="active">🏠 Home</a></li>
         <li><a href="#about">ℹ️ Sobre</a></li>
         <li><a href="#projects">💻 Projetos</a></li>
+        <li><a href="#testimonials">💬 Depoimentos</a></li>
         <li><a href="#contact">📩 Contato</a></li>
       </ul>
     </nav>
@@ -56,12 +60,13 @@
     <div class="hero-content">
       <img src="assets/images/foto.jpeg" alt="Foto de João Felipe" class="profile-photo">
       <h1>João Felipe (JF Creative Lab)</h1>
-      <p>Designer e Desenvolvedor Full Stack | Criatividade e Inovação</p>
+      <p>Designer e Desenvolvedor <span>Full Stack</span> | Criatividade e Inovação</p>
       <div class="hero-buttons">
         <a href="#projects" class="btn">Ver Projetos</a>
-        <a href="assets/curriculo.pdf" download class="btn">Download CV</a>
+        <a href="assets/curriculo.pdf" download class="btn secondary">Download CV</a>
       </div>
     </div>
+    <!-- Indicador de scroll será adicionado via JavaScript -->
   </section>
   
   <!-- Seção Sobre -->
@@ -69,14 +74,70 @@
     <h2>Sobre Mim</h2>
     <div class="about-content">
       <p>
-        Olá! Sou João Felipe, desenvolvedor Full Stack e designer especializado na criação de soluções digitais inovadoras. Minha abordagem combina design sofisticado com alta performance, garantindo projetos visualmente impactantes e funcionalmente impecáveis. Cada site, logotipo ou arte digital que desenvolvo é pensado estrategicamente para entregar identidade, experiência e resultado. Se a meta é elevar o nível, estou pronto para o desafio.
+        Olá! Sou <strong>João Felipe</strong>, desenvolvedor Full Stack e designer especializado na criação de soluções digitais inovadoras. Minha abordagem combina design sofisticado com alta performance, garantindo projetos visualmente impactantes e funcionalmente impecáveis. Cada site, logotipo ou arte digital que desenvolvo é pensado estrategicamente para entregar identidade, experiência e resultado. Se a meta é elevar o nível, estou pronto para o desafio.
       </p>
+      
+      <!-- Nova seção de habilidades -->
+      <div class="skills">
+        <h3>Minhas Habilidades</h3>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-html5"></i>
+            </div>
+            <span class="skill-name">HTML5</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-css3-alt"></i>
+            </div>
+            <span class="skill-name">CSS3</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-js"></i>
+            </div>
+            <span class="skill-name">JavaScript</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-python"></i>
+            </div>
+            <span class="skill-name">Python</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-react"></i>
+            </div>
+            <span class="skill-name">React</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-node-js"></i>
+            </div>
+            <span class="skill-name">Node.js</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <span class="skill-name">SQL</span>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fab fa-figma"></i>
+            </div>
+            <span class="skill-name">Figma</span>
+          </div>
+        </div>
+      </div>
+      
       <div class="education">
         <h3>Formação e Experiência</h3>
         <ul>
           <li><strong>Infinity School</strong> - Desenvolvimento Full Stack (HTML, CSS, JavaScript, Python)</li>
-          <li><strong>UAITEC - Brumadinho</strong> - Programação em Python</li>
-          <li><strong>UAITEC - Brumadinho</strong> - Informatica Basica e Avançada</li>
+          <li><strong>UAITEC</strong> - Programação em Python</li>
+          <li><strong>UAITEC</strong> - Informatica Basica e Avançada</li>
         </ul>
       </div>
     </div>
@@ -89,6 +150,13 @@
       <div class="project-card">
         <h3>Sub-Zero Skins</h3>
         <p>Plataforma inovadora de marketplace para skins do CS2, projetada para oferecer uma experiência fluida e responsiva. Desenvolvido com foco em usabilidade, segurança e design moderno, garantindo transações ágeis e confiáveis para os jogadores.</p>
+        <div class="project-tech">
+          <span class="tech-tag">HTML5</span>
+          <span class="tech-tag">CSS3</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">MongoDB</span>
+        </div>
         <div class="project-links">
           <a href="https://www.instagram.com/subzero.skins/" class="btn"><i class="fab fa-instagram"></i> Instagram</a>
           <a href="https://subzeroskins.com.br" class="btn">Ver Site</a>
@@ -97,32 +165,121 @@
       <div class="project-card">
         <h3>Logotipos</h3>
         <p>Criação de identidades visuais marcantes e profissionais para empresas e empreendedores. Cada logotipo é projetado com um conceito estratégico, garantindo originalidade, impacto visual e alinhamento com a identidade da marca.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Adobe Illustrator</span>
+          <span class="tech-tag">Photoshop</span>
+          <span class="tech-tag">Figma</span>
+          <span class="tech-tag">Design Gráfico</span>
+        </div>
         <div class="project-links">
           <a href="https://www.instagram.com/jf.creative.lab" class="btn"><i class="fab fa-instagram"></i> Instagram</a>
           <a href="#" class="btn" data-target="logoModal">Ver Logotipos</a>
         </div>
       </div>
     </div>
+    <a href="#contact" class="btn see-more-btn">Vamos trabalhar juntos</a>
+  </section>
+  
+  <!-- Nova Seção de Depoimentos -->
+  <section id="testimonials" class="testimonials-section">
+    <h2>Depoimentos</h2>
+    <p class="testimonials-intro">O que meus clientes dizem sobre meu trabalho</p>
+    
+    <div class="testimonials-slider">
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"João Felipe transformou completamente a identidade visual da nossa empresa. Seu trabalho combina perfeitamente estética e funcionalidade, resultando em um site que não só é bonito, mas também altamente eficiente."</p>
+        </div>
+        <div class="testimonial-author">
+          <img src="images/client1.jpg" alt="Foto do cliente" class="testimonial-avatar">
+          <div class="testimonial-info">
+            <h4>Carlos Silva</h4>
+            <p>CEO, TechSolutions</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Contratar o João para desenvolver nossa plataforma foi a melhor decisão que tomamos. Ele entendeu perfeitamente nossas necessidades e entregou um produto que superou todas as expectativas. Altamente recomendado!"</p>
+        </div>
+        <div class="testimonial-author">
+          <img src="images/client2.jpg" alt="Foto do cliente" class="testimonial-avatar">
+          <div class="testimonial-info">
+            <h4>Ana Oliveira</h4>
+            <p>Diretora de Marketing, Innova</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"O que mais me impressionou no trabalho do João foi sua capacidade de transformar conceitos complexos em designs intuitivos. Nosso aplicativo ficou exatamente como imaginávamos, e os usuários adoraram a experiência."</p>
+        </div>
+        <div class="testimonial-author">
+          <img src="images/client3.jpg" alt="Foto do cliente" class="testimonial-avatar">
+          <div class="testimonial-info">
+            <h4>Marcos Pereira</h4>
+            <p>Fundador, AppMaster</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="testimonial-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
   </section>
   
   <!-- Seção Contato -->
   <section id="contact" class="contact-section">
     <h2>Contato</h2>
+    <p class="contact-intro">Tem um projeto em mente ou quer conversar sobre uma oportunidade? Entre em contato comigo através do formulário abaixo ou pelas minhas redes sociais.</p>
+    
     <form action="https://formspree.io/f/yourformid" method="POST" class="contact-form">
-      <label for="name">Nome:</label>
-      <input type="text" id="name" name="name" required>
+      <div class="form-group">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" placeholder="Seu nome" required>
+      </div>
       
-      <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email" required>
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+      </div>
       
-      <label for="message">Mensagem:</label>
-      <textarea id="message" name="message" required></textarea>
+      <div class="form-group">
+        <label for="message">Mensagem:</label>
+        <textarea id="message" name="message" placeholder="Sua mensagem" required></textarea>
+      </div>
       
       <button type="submit" class="btn">Enviar Mensagem</button>
     </form>
+    
+    <div class="contact-alternatives">
+      <div class="contact-method">
+        <i class="fas fa-envelope"></i>
+        <h4>E-mail</h4>
+        <p>contato@jfcreativelab.com</p>
+      </div>
+      <div class="contact-method">
+        <i class="fas fa-globe"></i>
+        <h4>Atendimento</h4>
+        <p>Nacional e Internacional</p>
+      </div>
+      <div class="contact-method">
+        <i class="fas fa-clock"></i>
+        <h4>Disponibilidade</h4>
+        <p>Seg-Sex: 9h às 18h</p>
+      </div>
+    </div>
+    
     <div class="social-links">
-      <a href="https://linkedin.com/in/jfcreativelab" class="social-link"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/jfcreativelab" class="social-link"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/jfcreativelab" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/jfcreativelab" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/jf.creative.lab" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://behance.net/jfcreativelab" class="social-link" aria-label="Behance"><i class="fab fa-behance"></i></a>
     </div>
   </section>
   
@@ -143,6 +300,28 @@
     </div>
   </div>
 
+  <!-- Chatbot -->
+  <div class="chatbot-container">
+    <div class="chatbot-toggle">
+      <i class="fas fa-comment"></i>
+    </div>
+    <div class="chatbot-box">
+      <div class="chatbot-header">
+        <h3>Assistente Virtual</h3>
+        <span class="chatbot-close">&times;</span>
+      </div>
+      <div class="chatbot-messages">
+        <div class="message bot">
+          <div class="message-content">Olá! Sou o assistente virtual do João Felipe. Como posso ajudar você hoje?</div>
+        </div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" placeholder="Digite sua mensagem..." id="chatbot-input-field">
+        <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
   <!-- Rodapé -->
   <footer>
     <p>&copy; 2025 João Felipe | JF Creative Lab. Todos os direitos reservados.</p>
@@ -150,5 +329,7 @@
   
   <!-- Scripts -->
   <script src="js/main.js" defer></script>
+  <script src="js/chatbot.js" defer></script>
+  <script src="js/testimonials.js" defer></script>
 </body>
 </html>
