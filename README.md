@@ -31,15 +31,6 @@ Construído com tecnologias modernas e boas práticas de desenvolvimento web.
 📁 images
 📁 js
 📄 index.html
-assets/: Ícones, logos e vetores.
-
-css/: Estilizações do projeto.
-
-images/: Imagens do portfólio.
-
-js/: Scripts de interação.
-
-index.html: Página principal do site.
 
 🎯 Objetivos do Portfólio
 Apresentar meus projetos de forma visualmente atrativa
@@ -48,10 +39,4 @@ Demonstrar domínio em desenvolvimento web moderno
 
 Facilitar o contato para propostas, networking e parcerias
 
-📬 Contato
-
-Redes Sociais	Links
-LinkedIn	Clique aqui
-Portfólio Online	Acessar Portfólio
-Email	joaofelipe_pgn@live.com
 <p align="center"> 🚀 "Transformando ideias em projetos digitais modernos e escaláveis." </p> ```
