@@ -39,4 +39,4 @@ Demonstrar domínio em desenvolvimento web moderno
 
 Facilitar o contato para propostas, networking e parcerias
 
-<p align="center"> 🚀 "Transformando ideias em projetos digitais modernos e escaláveis." </p> ```
+ 🚀 "Transformando ideias em projetos digitais modernos e escaláveis."```
