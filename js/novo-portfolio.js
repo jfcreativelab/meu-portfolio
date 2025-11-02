@@ -113,7 +113,10 @@ class Portfolio {
                 const targetSection = document.querySelector(targetId);
                 
                 if (targetSection) {
-                    const offsetTop = targetSection.offsetTop - 80;
+                    // Ajustar offset baseado no tamanho da tela (mobile = 70px, desktop = 80px)
+                    const isMobile = window.innerWidth <= 768;
+                    const offset = isMobile ? 70 : 80;
+                    const offsetTop = targetSection.offsetTop - offset;
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
@@ -123,18 +126,55 @@ class Portfolio {
         });
 
         // Toggle menu mobile
-        if (navToggle) {
-            navToggle.addEventListener('click', () => {
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
                 navMenu.classList.toggle('active');
                 navToggle.classList.toggle('active');
+                
+                // Prevenir scroll do body quando menu está aberto
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Fechar menu ao clicar fora
+            document.addEventListener('click', (e) => {
+                if (navMenu.classList.contains('active') && 
+                    !navMenu.contains(e.target) && 
+                    !navToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Fechar menu ao fazer scroll
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (navMenu.classList.contains('active')) {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }, 100);
+                }
             });
         }
 
         // Fechar menu ao clicar em link
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
+                if (navMenu) {
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+                if (navToggle) {
+                    navToggle.classList.remove('active');
+                }
             });
         });
     }
