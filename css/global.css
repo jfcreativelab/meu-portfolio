@@ -1,0 +1,234 @@
+/* Variáveis de cores */
+:root {
+  --primary-color: #00ff99;  /* Verde Neon */
+  --secondary-color: #a855f7; /* Roxo Neon */
+  --accent-color: #ff6b6b;   /* Novo: Coral para destaque */
+  --tertiary-color: #00c3ff; /* Novo: Azul Neon para detalhes */
+  --background-color: #0a0a0a; /* Preto Fundo */
+  --surface-color: #1a1a1a;  /* Novo: Superfície para cards */
+  --text-color: #ffffff; /* Branco */
+  --text-secondary: #cccccc; /* Novo: Texto secundário */
+  --shadow-color: rgba(0, 255, 153, 0.5); /* Sombra Neon */
+  --shadow-secondary: rgba(168, 85, 247, 0.5); /* Novo: Sombra Secundária */
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Corpo da Página */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Melhorias na tipografia */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.5px;
+}
+
+p {
+  margin-bottom: 1em;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+}
+
+/* Efeito Matrix */
+.matrix-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: -1;
+}
+
+/* Estilo do Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: auto;
+  backdrop-filter: blur(5px); /* Novo: efeito de desfoque */
+}
+
+.modal-content {
+  background: var(--surface-color);
+  margin: 5% auto;
+  padding: 30px;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 20px var(--shadow-color);
+  animation: modalFadeIn 0.3s ease; /* Novo: animação de entrada */
+}
+
+@keyframes modalFadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.close:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+/* Estilo da Galeria de Logotipos */
+.logo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.logo-gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--shadow-secondary);
+}
+
+/* Animações globais */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to { 
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Classe de utilidade para animações */
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s ease forwards;
+}
+
+/* Melhorias na acessibilidade */
+:focus {
+  outline: 2px solid var(--tertiary-color);
+  outline-offset: 2px;
+}
+
+/* Barra de rolagem personalizada */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/* Indicador de seção ativa */
+.section-indicator {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+}
+
+.indicator-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+  background-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--shadow-color);
+}
+
+/* Botão de voltar ao topo */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 99;
+  box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+  background-color: var(--secondary-color);
+}
