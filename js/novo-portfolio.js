@@ -17,42 +17,63 @@ class Portfolio {
         this.setupModal();
     }
 
-    // Matrix Effect
+    // Matrix Effect - Otimizado para Performance
     setupMatrixEffect() {
-        console.log('Iniciando efeito Matrix...');
+        // Detectar se é mobile e reduzir/desabilitar Matrix
+        const isMobile = window.innerWidth <= 768;
+        const isLowEndDevice = navigator.hardwareConcurrency <= 4 || 
+                              (navigator.deviceMemory && navigator.deviceMemory <= 4);
+        
+        // Desabilitar Matrix em dispositivos móveis de baixa performance
+        if (isMobile && isLowEndDevice) {
+            const matrixBg = document.getElementById('matrix-bg');
+            if (matrixBg) {
+                matrixBg.style.display = 'none';
+            }
+            return;
+        }
+        
         const matrixBg = document.getElementById('matrix-bg');
         if (!matrixBg) {
-            console.error('Elemento matrix-bg não encontrado!');
             return;
         }
 
-        console.log('Elemento matrix-bg encontrado!');
-        const matrixChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+-=[]{}|;:,.<>?';
-        const columns = Math.floor(window.innerWidth / 30);
+        const matrixChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$';
+        // Reduzir drasticamente colunas no mobile
+        const columns = isMobile ? Math.floor(window.innerWidth / 60) : Math.floor(window.innerWidth / 30);
+        
+        let activeColumns = 0;
+        const maxActiveColumns = isMobile ? 5 : 15;
         
         function createMatrixColumn() {
+            // Limitar colunas ativas simultaneamente
+            if (activeColumns >= maxActiveColumns) {
+                return;
+            }
+            
             const column = document.createElement('div');
             column.className = 'matrix-column';
             column.style.left = Math.random() * (window.innerWidth - 20) + 'px';
             column.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            column.style.animationDelay = Math.random() * 2 + 's';
+            column.style.willChange = 'transform';
             
-            // Criar caracteres aleatórios
-            const charCount = Math.floor(Math.random() * 15) + 8;
+            // Reduzir caracteres no mobile
+            const charCount = isMobile ? Math.floor(Math.random() * 5) + 5 : Math.floor(Math.random() * 15) + 8;
             for (let i = 0; i < charCount; i++) {
                 const char = document.createElement('span');
                 char.className = 'matrix-character';
                 char.textContent = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-                char.style.animationDelay = Math.random() * 2 + 's';
                 column.appendChild(char);
             }
             
             matrixBg.appendChild(column);
+            activeColumns++;
             
             // Remover coluna após animação
             setTimeout(() => {
                 if (column && column.parentNode) {
                     column.remove();
+                    activeColumns--;
                 }
             }, 6000);
         }
@@ -60,20 +81,20 @@ class Portfolio {
         // Limpar qualquer conteúdo anterior
         matrixBg.innerHTML = '';
         
-        // Criar colunas inicialmente
-        for (let i = 0; i < columns; i++) {
+        // Criar menos colunas inicialmente no mobile
+        const initialColumns = isMobile ? Math.min(3, columns) : columns;
+        for (let i = 0; i < initialColumns; i++) {
             setTimeout(() => {
                 createMatrixColumn();
-            }, i * 150);
+            }, i * 200);
         }
         
-        // Continuar criando colunas
-        const matrixInterval = setInterval(createMatrixColumn, 300);
+        // Intervalo maior no mobile
+        const intervalTime = isMobile ? 800 : 300;
+        const matrixInterval = setInterval(createMatrixColumn, intervalTime);
         
         // Armazenar interval para poder limpar depois
         this.matrixInterval = matrixInterval;
-        
-        console.log(`Matrix iniciado com ${columns} colunas`);
     }
 
     // Loading Screen
@@ -179,32 +200,43 @@ class Portfolio {
         });
     }
 
-    // Scroll Effects
+    // Scroll Effects - Otimizado com requestAnimationFrame
     setupScrollEffects() {
         const navbar = document.querySelector('.navbar');
+        if (!navbar) return;
+        
         let lastScrollY = window.scrollY;
+        let ticking = false;
+        const isMobile = window.innerWidth <= 768;
 
-        window.addEventListener('scroll', () => {
+        const handleScroll = () => {
             const currentScrollY = window.scrollY;
             
-            // Navbar scroll effect
-            if (currentScrollY > 100) {
+            // Navbar scroll effect - apenas em desktop
+            if (!isMobile && currentScrollY > 100) {
                 navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-                navbar.style.backdropFilter = 'blur(20px)';
-            } else {
+            } else if (!isMobile) {
                 navbar.style.background = 'rgba(10, 10, 10, 0.8)';
-                navbar.style.backdropFilter = 'blur(20px)';
             }
-
-            // Hide/show navbar
-            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+            
+            // Hide/show navbar on scroll - desabilitado no mobile
+            if (!isMobile && currentScrollY > lastScrollY && currentScrollY > 200) {
                 navbar.style.transform = 'translateY(-100%)';
-            } else {
+            } else if (!isMobile) {
                 navbar.style.transform = 'translateY(0)';
             }
-
+            
             lastScrollY = currentScrollY;
-        });
+            ticking = false;
+        };
+
+        // Usar requestAnimationFrame para melhor performance
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(handleScroll);
+                ticking = true;
+            }
+        }, { passive: true });
     }
 
     // Animations
@@ -409,39 +441,68 @@ class Portfolio {
         });
     }
 
-    // Parallax Effects
+    // Parallax Effects - Desabilitado no Mobile
     setupParallax() {
-        const parallaxElements = document.querySelectorAll('.shape');
+        // Desabilitar parallax no mobile para melhor performance
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) return;
         
-        window.addEventListener('scroll', () => {
+        const parallaxElements = document.querySelectorAll('.shape');
+        if (parallaxElements.length === 0) return;
+        
+        let ticking = false;
+        
+        const updateParallax = () => {
             const scrolled = window.pageYOffset;
-            
             parallaxElements.forEach((element, index) => {
                 const speed = 0.5 + (index * 0.1);
                 element.style.transform = `translateY(${scrolled * speed}px)`;
+                element.style.willChange = 'transform';
             });
-        });
+            ticking = false;
+        };
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }, { passive: true });
     }
 
-    // Intersection Observer
+    // Intersection Observer - Otimizado para Mobile
     setupIntersectionObserver() {
+        const isMobile = window.innerWidth <= 768;
+        
+        // Configurações mais leves no mobile
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: isMobile ? 0.2 : 0.1,
+            rootMargin: isMobile ? '50px' : '0px 0px -50px 0px'
         };
+
+        let animatedSections = new Set();
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && !animatedSections.has(entry.target.id)) {
+                    animatedSections.add(entry.target.id);
                     entry.target.classList.add('animate-in');
                     
-                    // Trigger specific animations based on section
-                    if (entry.target.id === 'about') {
-                        this.animateAboutSection();
-                    } else if (entry.target.id === 'skills') {
-                        this.animateSkillBars();
-                    } else if (entry.target.id === 'work') {
-                        this.animateWorkItems();
+                    // Reduzir animações no mobile
+                    if (!isMobile) {
+                        // Trigger specific animations based on section
+                        if (entry.target.id === 'about') {
+                            this.animateAboutSection();
+                        } else if (entry.target.id === 'skills') {
+                            this.animateSkillBars();
+                        } else if (entry.target.id === 'work') {
+                            this.animateWorkItems();
+                        }
+                    } else {
+                        // Apenas animações essenciais no mobile
+                        if (entry.target.id === 'skills') {
+                            setTimeout(() => this.animateSkillBars(), 100);
+                        }
                     }
                 }
             });

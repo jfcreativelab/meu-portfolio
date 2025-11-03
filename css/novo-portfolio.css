@@ -2987,6 +2987,74 @@ body {
     }
 }
 
+/* ============================================
+   OTIMIZAÇÕES DE PERFORMANCE PARA MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Reduzir/desabilitar efeito Matrix no mobile */
+    .matrix-background {
+        opacity: 0.1 !important;
+        display: none; /* Desabilitado completamente no mobile */
+    }
+    
+    /* Otimizar animações com GPU acceleration */
+    .project-card-compact,
+    .skill-item,
+    .highlight-item {
+        will-change: transform;
+        transform: translateZ(0); /* Force GPU acceleration */
+    }
+    
+    /* Reduzir animações complexas */
+    .project-card-compact:hover {
+        transform: translateY(-4px); /* Menor movimento no mobile */
+    }
+    
+    /* Simplificar transições */
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Reduzir backdrop-filter que é pesado no mobile */
+    .navbar {
+        backdrop-filter: blur(10px); /* Reduzido de 20px */
+    }
+    
+    /* Otimizar imagens */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    /* Desabilitar animações em elementos não essenciais */
+    .hero-shapes .shape {
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    /* Reduzir sombras que são pesadas */
+    .project-card-compact {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .project-card-compact:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Reduzir animações para usuários que preferem movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 /* Utility Classes */
 .sr-only {
     position: absolute;
