@@ -16,13 +16,34 @@
     <!-- Estilos -->
     <link rel="stylesheet" href="css/novo-portfolio.css">
     
-    <!-- Meta tags -->
-    <meta name="description" content="João Felipe - Desenvolvedor Full Stack e Designer Criativo especializado em soluções digitais inovadoras">
-    <meta name="keywords" content="desenvolvedor, full stack, designer, portfolio, web development, javascript, python">
-    <meta property="og:title" content="João Felipe - Creative Developer">
-    <meta property="og:description" content="Transformando ideias em realidade digital">
-    <meta property="og:image" content="assets/images/og-image.jpg">
+    <!-- Meta tags SEO -->
+    <meta name="description" content="João Felipe - Desenvolvedor Full Stack e Designer Criativo especializado em soluções digitais inovadoras. Transformando ideias em realidade digital.">
+    <meta name="keywords" content="desenvolvedor, full stack, designer, portfolio, web development, javascript, python, react, node.js, design gráfico, UI/UX, identidade visual">
+    <meta name="author" content="João Felipe">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="pt-BR">
+    <link rel="canonical" href="https://jfcreativelab.github.io/meu-portfolio/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jfcreativelab.github.io/meu-portfolio/">
+    <meta property="og:title" content="João Felipe - Creative Developer | Portfolio">
+    <meta property="og:description" content="Desenvolvedor Full Stack e Designer Criativo especializado em soluções digitais inovadoras. Transformando ideias em realidade digital.">
+    <meta property="og:image" content="https://jfcreativelab.github.io/meu-portfolio/assets/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://jfcreativelab.github.io/meu-portfolio/">
+    <meta name="twitter:title" content="João Felipe - Creative Developer | Portfolio">
+    <meta name="twitter:description" content="Desenvolvedor Full Stack e Designer Criativo especializado em soluções digitais inovadoras.">
+    <meta name="twitter:image" content="https://jfcreativelab.github.io/meu-portfolio/assets/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
 </head>
 <body>
     <!-- Matrix Background Effect -->
@@ -72,11 +93,11 @@
                 </a>
             </div>
             
-            <div class="nav-toggle">
+            <button class="nav-toggle" aria-label="Menu de navegação" aria-expanded="false">
                 <span class="toggle-line"></span>
                 <span class="toggle-line"></span>
                 <span class="toggle-line"></span>
-            </div>
+            </button>
         </div>
     </nav>
     
@@ -92,9 +113,9 @@
         
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge">
+                <div class="hero-badge" role="status" aria-live="polite">
                     <span class="badge-text">Disponível para novos projetos</span>
-                    <div class="badge-dot"></div>
+                    <div class="badge-dot" aria-hidden="true"></div>
                 </div>
                 
                 <h1 class="hero-title">
@@ -333,12 +354,12 @@
                             <span class="tech-chip">Stripe</span>
                         </div>
                         <div class="card-actions-compact">
-                            <a href="https://subzeroskins.com.br" target="_blank" class="action-btn-compact primary">
-                                <i class="fas fa-external-link-alt"></i>
+                            <a href="https://subzeroskins.com.br" target="_blank" rel="noopener noreferrer" class="action-btn-compact primary" aria-label="Abrir site Sub-Zero Skins">
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 <span>Ver Site</span>
                             </a>
-                            <a href="https://www.instagram.com/subzero.skins/" target="_blank" class="action-btn-compact secondary">
-                                <i class="fab fa-instagram"></i>
+                            <a href="https://www.instagram.com/subzero.skins/" target="_blank" rel="noopener noreferrer" class="action-btn-compact secondary" aria-label="Abrir Instagram Sub-Zero Skins">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
                                 <span>Instagram</span>
                             </a>
                         </div>
@@ -373,12 +394,12 @@
                         </div>
                         <div class="card-price-compact">R$ 50</div>
                         <div class="card-actions-compact">
-                            <a href="https://jfcreativelab.github.io/Bot_NinjaExtractorTG/" target="_blank" class="action-btn-compact primary">
-                                <i class="fas fa-external-link-alt"></i>
+                            <a href="https://jfcreativelab.github.io/Bot_NinjaExtractorTG/" target="_blank" rel="noopener noreferrer" class="action-btn-compact primary" aria-label="Abrir projeto Bot NinjaExtractorTG">
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 <span>Ver Projeto</span>
                             </a>
-                            <a href="https://pay.cakto.com.br/376xfep_501899" target="_blank" class="action-btn-compact buy">
-                                <i class="fas fa-shopping-cart"></i>
+                            <a href="https://pay.cakto.com.br/376xfep_501899" target="_blank" rel="noopener noreferrer" class="action-btn-compact buy" aria-label="Comprar Bot NinjaExtractorTG">
+                                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                                 <span>Comprar</span>
                             </a>
                         </div>
@@ -413,12 +434,12 @@
                         </div>
                         <div class="card-price-compact">R$ 100</div>
                         <div class="card-actions-compact">
-                            <a href="https://jfcreativelab.github.io/Bot_DivNinjaDiscord/" target="_blank" class="action-btn-compact primary">
-                                <i class="fas fa-external-link-alt"></i>
+                            <a href="https://jfcreativelab.github.io/Bot_DivNinjaDiscord/" target="_blank" rel="noopener noreferrer" class="action-btn-compact primary" aria-label="Abrir projeto Bot DivNinja Discord">
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 <span>Ver Projeto</span>
                             </a>
-                            <a href="https://pay.cakto.com.br/oqx6tcy_500209" target="_blank" class="action-btn-compact buy">
-                                <i class="fas fa-shopping-cart"></i>
+                            <a href="https://pay.cakto.com.br/oqx6tcy_500209" target="_blank" rel="noopener noreferrer" class="action-btn-compact buy" aria-label="Comprar Bot DivNinja Discord">
+                                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                                 <span>Comprar</span>
                             </a>
                         </div>
@@ -460,11 +481,8 @@
                         <div class="project-icon schedule-icon">
                             <img src="assets/images/jfagende.png" alt="JFAgende!" class="project-icon-image">
                         </div>
-                        <div class="card-overlay-compact">
+                        <div class="card-overlay-compact" style="display: none;">
                             <div class="card-links">
-                                <a href="#" target="_blank" class="link-btn" title="Ver Projeto">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -478,12 +496,12 @@
                             <span class="tech-chip">MySQL</span>
                         </div>
                         <div class="card-actions-compact">
-                            <a href="#" target="_blank" class="action-btn-compact primary">
-                                <i class="fas fa-mobile-alt"></i>
+                            <a href="https://jf-agende.vercel.app" target="_blank" rel="noopener noreferrer" class="action-btn-compact primary" aria-label="Abrir aplicativo JFAgende" id="jfagende-app-link" onclick="window.open('https://jf-agende.vercel.app', '_blank'); return false;" style="position: relative; z-index: 9999; pointer-events: auto !important; cursor: pointer;">
+                                <i class="fas fa-mobile-alt" aria-hidden="true"></i>
                                 <span>Veja o app</span>
                             </a>
-                            <a href="https://www.instagram.com/jfagende/" target="_blank" class="action-btn-compact secondary">
-                                <i class="fab fa-instagram"></i>
+                            <a href="https://www.instagram.com/jfagende/" target="_blank" rel="noopener noreferrer" class="action-btn-compact secondary" aria-label="Abrir Instagram JFAgende">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
                                 <span>Instagram</span>
                             </a>
                         </div>
@@ -725,48 +743,48 @@
                     
                     <div class="contact-methods">
                         <div class="contact-method">
-                            <div class="method-icon">
+                            <div class="method-icon" aria-hidden="true">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="method-content">
                                 <h4>E-mail</h4>
                                 <p>joaofelipeliken@gmail.com</p>
-                                <a href="mailto:joaofelipeliken@gmail.com">Enviar e-mail</a>
+                                <a href="mailto:joaofelipeliken@gmail.com" aria-label="Enviar e-mail para joaofelipeliken@gmail.com">Enviar e-mail</a>
                             </div>
                         </div>
                         
                         <div class="contact-method">
-                            <div class="method-icon">
+                            <div class="method-icon" aria-hidden="true">
                                 <i class="fab fa-whatsapp"></i>
                             </div>
                             <div class="method-content">
                                 <h4>WhatsApp</h4>
                                 <p>+55 (31) 99713-2495</p>
-                                <a href="https://wa.me/5531997132495" target="_blank">Conversar</a>
+                                <a href="https://wa.me/5531997132495" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp para conversar">Conversar</a>
                             </div>
                         </div>
                         
                         <div class="contact-method">
-                            <div class="method-icon">
+                            <div class="method-icon" aria-hidden="true">
                                 <i class="fab fa-linkedin"></i>
                             </div>
                             <div class="method-content">
                                 <h4>LinkedIn</h4>
                                 <p>João Felipe</p>
-                                <a href="https://linkedin.com/in/jfcreativelab" target="_blank">Conectar</a>
+                                <a href="https://linkedin.com/in/jfcreativelab" target="_blank" rel="noopener noreferrer" aria-label="Abrir perfil no LinkedIn">Conectar</a>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="social-links">
-                        <a href="https://github.com/jfcreativelab" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
+                    <div class="social-links" role="list">
+                        <a href="https://github.com/jfcreativelab" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Abrir perfil no GitHub" role="listitem">
+                            <i class="fab fa-github" aria-hidden="true"></i>
                         </a>
-                        <a href="https://www.instagram.com/jf_creative_lab" target="_blank" class="social-link">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/jf_creative_lab" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Abrir perfil no Instagram" role="listitem">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
-                        <a href="https://behance.net/jfcreativelab" target="_blank" class="social-link">
-                            <i class="fab fa-behance"></i>
+                        <a href="https://behance.net/jfcreativelab" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Abrir perfil no Behance" role="listitem">
+                            <i class="fab fa-behance" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -774,18 +792,20 @@
                 <div class="contact-form-container">
                     <form class="contact-form" id="contact-form">
                         <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" name="name" required>
+                            <label for="name">Nome <span aria-label="obrigatório">*</span></label>
+                            <input type="text" id="name" name="name" required autocomplete="name" aria-required="true" aria-describedby="name-error" minlength="2" maxlength="100">
+                            <span id="name-error" class="error-message" role="alert" aria-live="polite"></span>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="email">E-mail <span aria-label="obrigatório">*</span></label>
+                            <input type="email" id="email" name="email" required autocomplete="email" aria-required="true" aria-describedby="email-error">
+                            <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
                         </div>
                         
                         <div class="form-group">
-                            <label for="subject">Assunto</label>
-                            <select id="subject" name="subject" required>
+                            <label for="subject">Assunto <span aria-label="obrigatório">*</span></label>
+                            <select id="subject" name="subject" required aria-required="true" aria-describedby="subject-error">
                                 <option value="">Selecione o assunto</option>
                                 <option value="website">Desenvolvimento de Website</option>
                                 <option value="app">Desenvolvimento de App</option>
@@ -794,11 +814,13 @@
                                 <option value="consultoria">Consultoria</option>
                                 <option value="outro">Outro</option>
                             </select>
+                            <span id="subject-error" class="error-message" role="alert" aria-live="polite"></span>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Mensagem <span aria-label="obrigatório">*</span></label>
+                            <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="message-error" minlength="10" maxlength="1000"></textarea>
+                            <span id="message-error" class="error-message" role="alert" aria-live="polite"></span>
                         </div>
                         
                         <button type="submit" class="btn btn-primary">
@@ -825,34 +847,34 @@
             <div class="modal-content">
                 <div class="logos-gallery">
                     <div class="logo-item">
-                        <img src="images/logo1.jpg" alt="Logotipo 1" loading="lazy">
+                            <img src="images/logo1.jpg" alt="Logotipo 1 - Projeto de identidade visual" loading="lazy" decoding="async">
                     </div>
                     <div class="logo-item">
-                        <img src="images/logo2.jpg" alt="Logotipo 2" loading="lazy">
+                        <img src="images/logo2.jpg" alt="Logotipo 2 - Projeto de identidade visual" loading="lazy" decoding="async">
                     </div>
                     <div class="logo-item">
-                        <img src="images/logo3.jpg" alt="Logotipo 3" loading="lazy">
+                        <img src="images/logo3.jpg" alt="Logotipo 3 - Projeto de identidade visual" loading="lazy" decoding="async">
                     </div>
                     <div class="logo-item">
-                        <img src="images/logo4.jpg" alt="Logotipo 4" loading="lazy">
+                        <img src="images/logo4.jpg" alt="Logotipo 4 - Projeto de identidade visual" loading="lazy" decoding="async">
                     </div>
                     <div class="logo-item">
-                        <img src="images/logo5.jpg" alt="Logotipo 5" loading="lazy">
+                        <img src="images/logo5.jpg" alt="Logotipo 5 - Projeto de identidade visual" loading="lazy" decoding="async">
                     </div>
                     <div class="logo-item">
-                        <img src="images/logo6.jpg" alt="Logotipo 6" loading="lazy">
+                        <img src="images/logo6.jpg" alt="Logotipo 6 - Projeto de identidade visual" loading="lazy" decoding="async">
                     </div>
                     <div class="logo-item">
-                        <img src="images/logo7.jpg" alt="Logotipo 7" loading="lazy">
+                        <img src="images/logo7.jpg" alt="Logotipo 7 - Projeto de identidade visual" loading="lazy" decoding="async">
                     </div>
                     <div class="logo-item">
-                        <img src="images/logo8.jpg" alt="Logotipo 8" loading="lazy">
+                        <img src="images/logo8.jpg" alt="Logotipo 8 - Projeto de identidade visual" loading="lazy" decoding="async">
                     </div>
                     <div class="logo-item">
-                        <img src="images/logo9.jpg" alt="Logotipo 9" loading="lazy">
+                        <img src="images/logo9.jpg" alt="Logotipo 9 - Projeto de identidade visual" loading="lazy" decoding="async">
                     </div>
                     <div class="logo-item">
-                        <img src="images/logo10.jpg" alt="Logotipo 10" loading="lazy">
+                        <img src="images/logo10.jpg" alt="Logotipo 10 - Projeto de identidade visual" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -876,67 +898,7 @@
     </footer>
     
     <!-- Scripts -->
-    <script src="js/novo-portfolio.js"></script>
-    <script src="matrix-effect.js"></script>
-    
-    <!-- Matrix Effect Inline (Garantia) -->
-    <script>
-        // Efeito Matrix inline para garantir que funcione
-        (function() {
-            console.log('Iniciando Matrix inline...');
-            
-            function startMatrix() {
-                const matrixBg = document.getElementById('matrix-bg');
-                if (!matrixBg) {
-                    console.error('Matrix bg não encontrado!');
-                    return;
-                }
-                
-                console.log('Matrix bg encontrado, iniciando efeito...');
-                
-                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+-=[]{}|;:,.<>?';
-                
-                function createColumn() {
-                    const col = document.createElement('div');
-                    col.className = 'matrix-column';
-                    col.style.left = Math.random() * window.innerWidth + 'px';
-                    col.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                    
-                    // Adicionar caracteres
-                    for (let i = 0; i < 10; i++) {
-                        const span = document.createElement('span');
-                        span.className = 'matrix-character';
-                        span.textContent = chars[Math.floor(Math.random() * chars.length)];
-                        col.appendChild(span);
-                    }
-                    
-                    matrixBg.appendChild(col);
-                    
-                    // Remover após 6 segundos
-                    setTimeout(() => {
-                        if (col.parentNode) col.remove();
-                    }, 6000);
-                }
-                
-                // Criar colunas iniciais
-                for (let i = 0; i < 20; i++) {
-                    setTimeout(createColumn, i * 100);
-                }
-                
-                // Continuar criando
-                setInterval(createColumn, 500);
-                
-                console.log('Matrix iniciado!');
-            }
-            
-            // Tentar iniciar imediatamente
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', startMatrix);
-            } else {
-                startMatrix();
-            }
-        })();
-    </script>
+    <script src="js/novo-portfolio.js" defer></script>
 </body>
 </html>
 

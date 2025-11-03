@@ -125,6 +125,10 @@ class Portfolio {
         const navLinks = document.querySelectorAll('.nav-link');
         const navToggle = document.querySelector('.nav-toggle');
         const navMenu = document.querySelector('.nav-menu');
+        
+        if (!navToggle || !navMenu) {
+            return; // Navigation elements not found
+        }
 
         // Smooth scroll para links de navegação
         navLinks.forEach(link => {
@@ -147,44 +151,52 @@ class Portfolio {
         });
 
         // Toggle menu mobile
-        if (navToggle && navMenu) {
-            navToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                navMenu.classList.toggle('active');
-                navToggle.classList.toggle('active');
-                
-                // Prevenir scroll do body quando menu está aberto
-                if (navMenu.classList.contains('active')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            });
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isActive = navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
             
-            // Fechar menu ao clicar fora
-            document.addEventListener('click', (e) => {
-                if (navMenu.classList.contains('active') && 
-                    !navMenu.contains(e.target) && 
-                    !navToggle.contains(e.target)) {
+            // Atualizar ARIA
+            navToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            
+            // Prevenir scroll do body quando menu está aberto
+            if (isActive) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+            
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', (e) => {
+            // Não interferir com links externos
+            if (e.target.closest('a[data-external-link]') || e.target.closest('a[href^="http"]')) {
+                return;
+            }
+            
+            if (navMenu.classList.contains('active') && 
+                !navMenu.contains(e.target) && 
+                !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+            
+        // Fechar menu ao fazer scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (navMenu.classList.contains('active')) {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
                     navMenu.classList.remove('active');
                     navToggle.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
                     document.body.style.overflow = '';
-                }
-            });
-            
-            // Fechar menu ao fazer scroll
-            let scrollTimeout;
-            window.addEventListener('scroll', () => {
-                if (navMenu.classList.contains('active')) {
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(() => {
-                        navMenu.classList.remove('active');
-                        navToggle.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }, 100);
-                }
-            });
-        }
+                }, 100);
+            }
+        }, { passive: true });
 
         // Fechar menu ao clicar em link
         navLinks.forEach(link => {
@@ -365,28 +377,39 @@ class Portfolio {
     }
 
     showFieldValidation(field, isValid, message) {
-        const errorElement = field.parentNode.querySelector('.error-message');
+        const errorId = field.id + '-error';
+        let errorElement = document.getElementById(errorId);
+        
+        // Remover estado de erro anterior
+        field.setAttribute('aria-invalid', isValid ? 'false' : 'true');
         
         if (isValid) {
             field.style.borderColor = 'var(--border-primary)';
-            if (errorElement) errorElement.remove();
+            if (errorElement) {
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+            }
         } else {
             field.style.borderColor = 'var(--error)';
             if (!errorElement) {
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'error-message';
-                errorDiv.style.color = 'var(--error)';
-                errorDiv.style.fontSize = 'var(--font-size-sm)';
-                errorDiv.style.marginTop = 'var(--space-1)';
-                field.parentNode.appendChild(errorDiv);
+                errorElement = document.createElement('span');
+                errorElement.id = errorId;
+                errorElement.className = 'error-message';
+                errorElement.setAttribute('role', 'alert');
+                errorElement.setAttribute('aria-live', 'polite');
+                field.parentNode.appendChild(errorElement);
             }
-            field.parentNode.querySelector('.error-message').textContent = message;
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
         }
     }
 
-    handleFormSubmit(form) {
+    async handleFormSubmit(form) {
         const submitBtn = form.querySelector('button[type="submit"]');
+        if (!submitBtn) return;
+        
         const btnText = submitBtn.querySelector('.btn-text');
+        if (!btnText) return;
         
         // Validate all fields
         const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
@@ -400,20 +423,45 @@ class Portfolio {
 
         if (!isFormValid) {
             this.showNotification('Por favor, corrija os erros no formulário', 'error');
+            // Scroll to first error
+            const firstError = form.querySelector('[aria-invalid="true"]');
+            if (firstError) {
+                firstError.focus();
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
             return;
         }
 
         // Show loading state
         submitBtn.disabled = true;
+        submitBtn.setAttribute('aria-busy', 'true');
         btnText.textContent = 'Enviando...';
         
-        // Simulate form submission
-        setTimeout(() => {
+        try {
+            // Simulate form submission (replace with actual API call)
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
             this.showNotification('Mensagem enviada com sucesso!', 'success');
             form.reset();
+            
+            // Clear all error messages
+            form.querySelectorAll('.error-message').forEach(error => {
+                error.textContent = '';
+                error.style.display = 'none';
+            });
+            
+            // Clear aria-invalid
+            form.querySelectorAll('[aria-invalid]').forEach(field => {
+                field.setAttribute('aria-invalid', 'false');
+            });
+            
+        } catch (error) {
+            this.showNotification('Erro ao enviar mensagem. Tente novamente.', 'error');
+        } finally {
             submitBtn.disabled = false;
+            submitBtn.setAttribute('aria-busy', 'false');
             btnText.textContent = 'Enviar Mensagem';
-        }, 2000);
+        }
     }
 
     // Skills Tabs
@@ -686,6 +734,28 @@ class Portfolio {
 // Initialize Portfolio when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new Portfolio();
+    
+    // Garantir que o link do JFAgende funciona - SOLUÇÃO FORÇADA
+    const jfagendeLink = document.getElementById('jfagende-app-link');
+    if (jfagendeLink) {
+        // Remover qualquer listener existente
+        const newLink = jfagendeLink.cloneNode(true);
+        jfagendeLink.parentNode.replaceChild(newLink, jfagendeLink);
+        
+        // Adicionar listener que FORÇA a abertura
+        newLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            window.location.href = 'https://jf-agende.vercel.app/';
+            return false;
+        }, true); // Use capture phase
+        
+        // Também adicionar mousedown para garantir
+        newLink.addEventListener('mousedown', function(e) {
+            e.stopPropagation();
+        }, true);
+    }
 });
 
 // Additional utility functions
@@ -711,10 +781,6 @@ function isElementInViewport(el) {
 if ('requestIdleCallback' in window) {
     requestIdleCallback(() => {
         // Load non-critical resources here
-        console.log('Portfolio loaded successfully!');
+        // Debug logs removed for production
     });
-} else {
-    setTimeout(() => {
-        console.log('Portfolio loaded successfully!');
-    }, 1);
 }
