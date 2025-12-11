@@ -810,8 +810,14 @@ textarea,
     }
 
     /* Navigation Mobile */
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+
     .hamburger-menu {
         display: flex;
+        align-items: center;
+        padding: 0.5rem;
     }
 
     .nav-links {
