@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jfcreativelab.github.io/meu-portfolio/sitemap.xml

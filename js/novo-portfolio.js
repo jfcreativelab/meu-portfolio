@@ -2,6 +2,16 @@
 // QUANTUMVERSE CORE SYSTEM
 // High-Performance Interactive Logic
 
+// Page Loader
+window.addEventListener('load', () => {
+    const loader = document.getElementById('pageLoader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('hidden');
+        }, 2000);
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     initCursor();
     initHoloCards();
@@ -10,6 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initSkillTabs();
     initSkillsAnimation();
     initMobileMenu();
+    initScrollProgress();
+    initFormValidation();
+    initAnalyticsTracking();
 });
 
 /* --- 1.1 MOBILE MENU --- */
@@ -158,7 +171,7 @@ function initGlitchEffect() {
     });
 }
 
-/* --- 4. FORM HANDLING (Preserved Logic) --- */
+/* --- 4. FORM HANDLING (Formspree Integration) --- */
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
@@ -166,26 +179,51 @@ function initContactForm() {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = form.querySelector('button');
-        const originalText = btn.innerText;
+        const btnSpan = btn.querySelector('span');
+        const originalText = btnSpan.innerText;
 
         // Visual Feedback
-        btn.innerText = 'TRANSMITTING...';
+        btnSpan.innerText = 'ENVIANDO...';
+        btn.disabled = true;
         btn.style.opacity = '0.7';
 
-        // Simulate Network Request
-        await new Promise(r => setTimeout(r, 2000));
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
 
-        // Success State
-        btn.innerText = 'DATA_SENT_SUCCESSFULLY';
-        btn.style.borderColor = 'var(--neon-cyan)';
-        btn.style.color = 'var(--neon-cyan)';
+            if (response.ok) {
+                // Sucesso
+                btnSpan.innerText = 'MENSAGEM ENVIADA! ✓';
+                btn.style.background = 'var(--toxic-lime)';
+                form.reset();
 
+                // Rastrear no Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit', {
+                        form_name: 'contact',
+                        event_category: 'engagement',
+                        event_label: 'Contact Form'
+                    });
+                }
+            } else {
+                throw new Error('Erro ao enviar');
+            }
+        } catch (error) {
+            btnSpan.innerText = 'ERRO! Tente novamente';
+            btn.style.background = 'red';
+        }
+
+        // Reset depois de 3s
         setTimeout(() => {
-            btn.innerText = originalText;
-            btn.style.borderColor = 'var(--neon-magenta)';
-            btn.style.color = 'white';
+            btnSpan.innerText = originalText;
+            btn.disabled = false;
             btn.style.opacity = '1';
-            form.reset();
+            btn.style.background = '';
         }, 3000);
     });
 }
@@ -205,6 +243,14 @@ function initSkillTabs() {
             tab.classList.add('active');
             const category = tab.getAttribute('data-category');
             document.querySelector(`.skills-grid[data-category="${category}"]`).classList.add('active');
+
+            // Track skill category view
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'skill_category_view', {
+                    category: category,
+                    event_category: 'engagement'
+                });
+            }
         });
     });
 }
@@ -223,4 +269,100 @@ function initSkillsAnimation() {
     }, { threshold: 0.1 });
 
     skillBars.forEach(bar => observer.observe(bar));
+}
+
+/* --- 7. SCROLL PROGRESS BAR --- */
+function initScrollProgress() {
+    const progressBar = document.getElementById('scrollProgress');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        progressBar.style.width = scrolled + '%';
+    });
+}
+
+/* --- 8. FORM VALIDATION --- */
+function initFormValidation() {
+    const formInputs = document.querySelectorAll('#contact-form input:not([type="submit"]), #contact-form textarea');
+
+    formInputs.forEach(input => {
+        input.addEventListener('blur', () => {
+            if (!input.value.trim()) {
+                input.style.borderBottomColor = 'red';
+                input.setAttribute('aria-invalid', 'true');
+            } else if (input.type === 'email' && !isValidEmail(input.value)) {
+                input.style.borderBottomColor = 'red';
+                input.setAttribute('aria-invalid', 'true');
+            } else {
+                input.style.borderBottomColor = 'var(--toxic-lime)';
+                input.setAttribute('aria-invalid', 'false');
+            }
+        });
+
+        input.addEventListener('focus', () => {
+            input.style.borderBottomColor = 'var(--toxic-lime)';
+        });
+    });
+}
+
+function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+/* --- 9. ANALYTICS TRACKING --- */
+function initAnalyticsTracking() {
+    // Track project clicks
+    const projectLinks = document.querySelectorAll('.holo-card a');
+    projectLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const projectTitle = link.closest('.holo-card').querySelector('.holo-title')?.textContent || 'Unknown';
+            const linkType = link.classList.contains('secondary') ? 'GitHub' : 'Live Site';
+
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'project_click', {
+                    project_name: projectTitle,
+                    link_type: linkType,
+                    event_category: 'engagement'
+                });
+            }
+        });
+    });
+
+    // Track CTA clicks
+    const ctaButtons = document.querySelectorAll('.hero-actions .cyber-btn');
+    ctaButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const buttonText = btn.textContent.trim();
+
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'cta_click', {
+                    button_text: buttonText,
+                    location: 'hero',
+                    event_category: 'engagement'
+                });
+            }
+        });
+    });
+
+    // Track section views
+    const sections = document.querySelectorAll('section[id]');
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'section_view', {
+                        section_name: sectionId,
+                        event_category: 'engagement'
+                    });
+                }
+            }
+        });
+    }, { threshold: 0.5 });
+
+    sections.forEach(section => sectionObserver.observe(section));
 }

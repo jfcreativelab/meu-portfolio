@@ -21,9 +21,9 @@
 
     <!-- Meta tags SEO -->
     <meta name="description"
-        content="João Felipe - Desenvolvedor Full Stack e Designer Criativo especializado em soluções digitais inovadoras. Transformando ideias em realidade digital.">
+        content="João Felipe - Desenvolvedor Full Stack com +5 anos de experiência. Especialista em React, Node.js, Python e Design UI/UX. Crio bots, APIs e soluções digitais escaláveis. Veja meu portfólio!">
     <meta name="keywords"
-        content="desenvolvedor, full stack, designer, portfolio, web development, javascript, python, react, node.js, design gráfico, UI/UX, identidade visual">
+        content="desenvolvedor full stack, react developer, node.js, python developer, web designer, ui ux designer, bot developer, telegram bot, discord bot, playwright automation, portfolio desenvolvedor brasil, freelancer desenvolvedor, joão felipe desenvolvedor">
     <meta name="author" content="João Felipe">
     <meta name="robots" content="index, follow">
     <meta name="language" content="pt-BR">
@@ -32,10 +32,10 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jfcreativelab.github.io/meu-portfolio/">
-    <meta property="og:title" content="João Felipe - Creative Developer | Portfolio">
+    <meta property="og:title" content="João Felipe - Full Stack Developer | UI Designer">
     <meta property="og:description"
-        content="Desenvolvedor Full Stack e Designer Criativo especializado em soluções digitais inovadoras. Transformando ideias em realidade digital.">
-    <meta property="og:image" content="https://jfcreativelab.github.io/meu-portfolio/assets/images/og-image.jpg">
+        content="Desenvolvedor Full Stack com +5 anos de experiência. Especialista em React, Node.js, Python e Design UI/UX. Transformando ideias em realidade digital.">
+    <meta property="og:image" content="https://jfcreativelab.github.io/meu-portfolio/assets/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="pt_BR">
@@ -43,24 +43,76 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://jfcreativelab.github.io/meu-portfolio/">
-    <meta name="twitter:title" content="João Felipe - Creative Developer | Portfolio">
+    <meta name="twitter:title" content="João Felipe - Full Stack Developer | UI Designer">
     <meta name="twitter:description"
-        content="Desenvolvedor Full Stack e Designer Criativo especializado em soluções digitais inovadoras.">
-    <meta name="twitter:image" content="https://jfcreativelab.github.io/meu-portfolio/assets/images/og-image.jpg">
+        content="Desenvolvedor Full Stack com +5 anos de experiência. Especialista em React, Node.js, Python e Design UI/UX.">
+    <meta name="twitter:image" content="https://jfcreativelab.github.io/meu-portfolio/assets/images/og-image.png">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/web-app-manifest-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon/web-app-manifest-512x512.png">
+    <link rel="manifest" href="assets/images/favicon/site.webmanifest">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MSEK26SFSF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-MSEK26SFSF');
+    </script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "João Felipe",
+      "jobTitle": "Full Stack Developer & UI Designer",
+      "url": "https://jfcreativelab.github.io/meu-portfolio/",
+      "image": "https://jfcreativelab.github.io/meu-portfolio/assets/images/foto.jpeg",
+      "sameAs": [
+        "https://github.com/jfcreativelab",
+        "https://linkedin.com/in/jfcreativelab",
+        "https://www.instagram.com/jf_creative_lab",
+        "https://behance.net/jfcreativelab"
+      ],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Infinity School"
+      },
+      "knowsAbout": [
+        "Full Stack Development",
+        "JavaScript",
+        "Python",
+        "React",
+        "Node.js",
+        "UI/UX Design",
+        "Bot Development",
+        "Web Development",
+        "API Development"
+      ]
+    }
+    </script>
 </head>
 
 <body>
-    <!-- Aurora Background System -->
-    <div class="noise-overlay"></div>
-    <div class="aurora-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-logo">JF_LAB</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <div class="loader-text">INITIALIZING_SYSTEM...</div>
+        </div>
     </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
 
     <!-- MAIN WRAPPER -->
     <main class="container">
@@ -103,7 +155,7 @@
             <main class="container">
 
                 <!-- HERO SECTION -->
-                <section id="hero" class="hero-quantum">
+                <section id="hero" class="hero-quantum" aria-label="Introdução">
 
                     <div class="hero-context">PRAZER SOU JOÃO FELIPE</div>
 
@@ -116,19 +168,42 @@
                         <span class="highlight-text">TRANSFORMANDO IDEIAS EM REALIDADE</span>
                     </p>
 
-                    <a href="#projects" class="cyber-btn main-cta">
-                        PROJETOS
-                    </a>
+                    <div class="hero-actions">
+                        <a href="#projects" class="cyber-btn main-cta">
+                            <i class="fas fa-code"></i> VER PROJETOS
+                        </a>
+                        <a href="#contact" class="cyber-btn">
+                            <i class="fas fa-envelope"></i> CONTRATAR
+                        </a>
+                        <a href="assets/curriculo.pdf" download class="cyber-btn secondary">
+                            <i class="fas fa-download"></i> BAIXAR CV
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">+20</span>
+                            <span class="stat-label">Projetos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">+5</span>
+                            <span class="stat-label">Anos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Satisfação</span>
+                        </div>
+                    </div>
 
                     <div class="scroll-indicator">
                         <div class="scroll-line"></div>
                     </div>
                 </section>
 
-                <!-- SOBRE MIM SECTION (Restored) -->
-                <section id="about" class="about-quantum">
+                <!-- SOBRE MIM SECTION -->
+                <section id="about" class="about-quantum" aria-labelledby="about-title">
                     <div class="section-header">
-                        <h2 class="section-title">
+                        <h2 id="about-title" class="section-title">
                             <span class="title-number">01</span>
                             <span class="title-text">SOBRE MIM</span>
                         </h2>
@@ -138,28 +213,71 @@
                         <div class="about-card dev">
                             <div class="card-icon"><i class="fas fa-code"></i></div>
                             <h3>DESENVOLVEDOR</h3>
-                            <p>Full Stack com foco em JavaScript, Python e tecnologias modernas. Criando arquiteturas
-                                robustas e escaláveis.</p>
+                            <p>Full Stack com <strong>+5 anos de experiência</strong> em JavaScript (React, Node.js),
+                                Python e tecnologias modernas. Já desenvolvi <strong>+20 projetos</strong> incluindo
+                                marketplaces, sistemas de agendamento e automações.</p>
+                            <div class="card-tags">
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>Python</span>
+                            </div>
                         </div>
 
                         <div class="about-card design">
                             <div class="card-icon"><i class="fas fa-pen-nib"></i></div>
                             <h3>DESIGNER</h3>
-                            <p>UI/UX, identidade visual e experiência do usuário. Interface não é apenas visual, é como
-                                funciona.</p>
+                            <p>UI/UX, identidade visual e experiência do usuário. Especialista em criar interfaces que
+                                não apenas parecem incríveis, mas também <strong>convertem e engajam</strong>.</p>
+                            <div class="card-tags">
+                                <span>Figma</span>
+                                <span>Photoshop</span>
+                                <span>UI/UX</span>
+                            </div>
                         </div>
 
                         <div class="about-card innovation">
                             <div class="card-icon"><i class="fas fa-rocket"></i></div>
                             <h3>INOVAÇÃO</h3>
-                            <p>Sempre explorando novas tecnologias e tendências para entregar soluções únicas e à frente
-                                do tempo.</p>
+                            <p>Sempre explorando novas tecnologias e tendências. Foco em <strong>performance</strong>,
+                                <strong>escalabilidade</strong> e <strong>experiências memoráveis</strong>.
+                            </p>
+                            <div class="card-tags">
+                                <span>AI</span>
+                                <span>Automação</span>
+                                <span>Cloud</span>
+                            </div>
                         </div>
 
                         <div class="about-card bots">
                             <div class="card-icon"><i class="fas fa-robot"></i></div>
                             <h3>BOTS & SCRIPTS</h3>
-                            <p>Desenvolvo BOTS e SCRIPTS para automatizar processos e otimizar a produtividade.</p>
+                            <p>Desenvolvo bots inteligentes e scripts de automação para Telegram, Discord e web.
+                                <strong>Otimizando processos</strong> e melhorando produtividade.
+                            </p>
+                            <div class="card-tags">
+                                <span>Telegram</span>
+                                <span>Discord</span>
+                                <span>Playwright</span>
+                            </div>
+                        </div>
+
+                        <div class="about-metrics">
+                            <div class="metric-card">
+                                <div class="metric-number">+20</div>
+                                <div class="metric-label">Projetos Entregues</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-number">+5</div>
+                                <div class="metric-label">Anos de Experiência</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-number">100%</div>
+                                <div class="metric-label">Clientes Satisfeitos</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-number">24/7</div>
+                                <div class="metric-label">Disponibilidade</div>
+                            </div>
                         </div>
 
                         <div class="about-text-full">
@@ -170,13 +288,13 @@
                     </div>
                 </section>
 
-                </section>
+
 
                 <!-- Education/Experience Section -->
-                <section id="education" class="education-quantum">
+                <section id="education" class="education-quantum" aria-labelledby="education-title">
                     <div class="section-container">
                         <div class="section-header">
-                            <h2 class="section-title">
+                            <h2 id="education-title" class="section-title">
                                 <span class="title-number">02</span>
                                 <span class="title-text">FORMAÇÃO</span>
                             </h2>
@@ -251,9 +369,9 @@
                 </section>
 
                 <!-- PROJECTS SECTION -->
-                <section id="projects" class="work-grid-quantum">
+                <section id="projects" class="work-grid-quantum" aria-labelledby="projects-title">
                     <div class="section-header full-width">
-                        <h2 class="section-title">
+                        <h2 id="projects-title" class="section-title">
                             <span class="title-number">03</span>
                             <span class="title-text">PROJETOS</span>
                         </h2>
@@ -347,7 +465,7 @@
                             </div>
                             <div class="card-actions">
                                 <a href="https://jfcreativelab.github.io/Bot_NinjaExtractorTG/" target="_blank"
-                                    class="cyber-btn">VER SITE</a>
+                                    class="cyber-btn">COMPRAR</a>
                                 <a href="https://github.com/jfcreativelab/Bot_NinjaExtractorTG" target="_blank"
                                     class="cyber-btn secondary">GITHUB</a>
                             </div>
@@ -370,7 +488,7 @@
                             </div>
                             <div class="card-actions">
                                 <a href="https://jfcreativelab.github.io/Bot_DivNinjaDiscord/" target="_blank"
-                                    class="cyber-btn">VER SITE</a>
+                                    class="cyber-btn">COMPRAR</a>
                                 <a href="https://github.com/jfcreativelab/Bot_DivNinjaDiscord" target="_blank"
                                     class="cyber-btn secondary">GITHUB</a>
                             </div>
@@ -378,10 +496,10 @@
                     </article>
                 </section>
                 <!-- Skills Section -->
-                <section id="skills" class="skills">
+                <section id="skills" class="skills" aria-labelledby="skills-title">
                     <div class="section-container">
                         <div class="section-header">
-                            <h2 class="section-title">
+                            <h2 id="skills-title" class="section-title">
                                 <span class="title-number">04</span>
                                 <span class="title-text">Skills</span>
                             </h2>
@@ -683,10 +801,10 @@
                 </section>
 
                 <!-- Contact Section -->
-                <section id="contact" class="contact">
+                <section id="contact" class="contact" aria-labelledby="contact-title">
                     <div class="section-container">
                         <div class="section-header">
-                            <h2 class="section-title">
+                            <h2 id="contact-title" class="section-title">
                                 <span class="title-number">05</span>
                                 <span class="title-text">Vamos Conversar</span>
                             </h2>
@@ -702,6 +820,14 @@
                                     </p>
                                 </div>
 
+                                <div class="availability-status">
+                                    <div class="status-indicator online"></div>
+                                    <div class="status-text">
+                                        <strong>Disponível para projetos</strong>
+                                        <span>Respondo em até 24h</span>
+                                    </div>
+                                </div>
+
                                 <div class="contact-methods">
                                     <div class="contact-method">
                                         <div class="method-icon" aria-hidden="true">
@@ -709,9 +835,9 @@
                                         </div>
                                         <div class="method-content">
                                             <h4>E-mail</h4>
-                                            <p>joaofelipeliken@gmail.com</p>
-                                            <a href="mailto:joaofelipeliken@gmail.com"
-                                                aria-label="Enviar e-mail para joaofelipeliken@gmail.com">Enviar
+                                            <p>jfcreativelab@proton.me</p>
+                                            <a href="mailto:jfcreativelab@proton.me"
+                                                aria-label="Enviar e-mail para jfcreativelab@proton.me">Enviar
                                                 e-mail</a>
                                         </div>
                                     </div>
@@ -748,7 +874,7 @@
                                         class="social-link" aria-label="Abrir perfil no GitHub" role="listitem">
                                         <i class="fab fa-github" aria-hidden="true"></i>
                                     </a>
-                                    <a href="https://www.instagram.com/jf_creative_lab" target="_blank"
+                                    <a href="https://www.instagram.com/jf.creativelab" target="_blank"
                                         rel="noopener noreferrer" class="social-link"
                                         aria-label="Abrir perfil no Instagram" role="listitem">
                                         <i class="fab fa-instagram" aria-hidden="true"></i>
@@ -762,7 +888,9 @@
                             </div>
 
                             <div class="contact-form-container">
-                                <form class="contact-form" id="contact-form">
+                                <!-- SUBSTITUA 'SEU_ID_FORMSPREE' pelo ID real do Formspree -->
+                                <form class="contact-form" id="contact-form"
+                                    action="https://formspree.io/f/SEU_ID_FORMSPREE" method="POST">
                                     <div class="form-group">
                                         <label for="name">Nome <span aria-label="obrigatório">*</span></label>
                                         <input type="text" id="name" name="name" required autocomplete="name"
