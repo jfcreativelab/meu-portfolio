@@ -1153,37 +1153,3 @@ textarea,
     font-size: 0.85rem;
     color: #888;
 }
-
-/* --- ACCESSIBILITY - REDUCED MOTION --- */
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-
-    .quantum-grid {
-        animation: none;
-    }
-
-    .marquee-content {
-        animation: none;
-    }
-
-    .skill-progress {
-        transition: width 0.01ms !important;
-    }
-
-    .loader-progress {
-        animation: none;
-        width: 100%;
-    }
-
-    .status-indicator.online {
-        animation: none;
-    }
-}
