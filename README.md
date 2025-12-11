@@ -172,49 +172,6 @@ Testado e otimizado para:
 
 ---
 
-## 🔧 Configurações Necessárias
-
-### 1. Formspree (Formulário de Contato)
-
-```html
-<!-- Atualizar em index.html linha 897 -->
-<form action="https://formspree.io/f/SEU_ID_FORMSPREE">
-```
-
-1. Criar conta em https://formspree.io/
-2. Criar novo form
-3. Copiar ID
-4. Substituir `SEU_ID_FORMSPREE`
-
-### 2. Google Analytics (Já Configurado)
-
-```javascript
-// ID: G-MSEK26SFSF
-```
-
-✅ Analytics já está ativo e rastreando!
-
-### 3. Google Ads (Já Configurado)
-
-```javascript
-// ID: AW-17796624381
-```
-
-✅ Conversões configuradas!
-
----
-
-## 📈 Analytics Tracking
-
-### Eventos Rastreados
-
-- 📝 **form_submit** - Envio do formulário
-- 🖱️ **project_click** - Cliques em projetos
-- 🎯 **cta_click** - Cliques em CTAs
-- 📊 **skill_category_view** - Visualização de skills
-- 👁️ **section_view** - Visualização de seções
-
----
 
 ## 🔐 Segurança
 
